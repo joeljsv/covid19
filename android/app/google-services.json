@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1057951080836",
+    "firebase_url": "https://covid-19kerala.firebaseio.com",
+    "project_id": "covid-19kerala",
+    "storage_bucket": "covid-19kerala.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1057951080836:android:e40ea7ba1f1252c9bebdd1",
+        "android_client_info": {
+          "package_name": "covidala.covid19"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1057951080836-9dp2eo3hq742n3au0i5mo1dft63kk95d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQ_lee0BWUqW2mJH3ZIJ5ASXj2cJQWOlI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1057951080836-9dp2eo3hq742n3au0i5mo1dft63kk95d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
