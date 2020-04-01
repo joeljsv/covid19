@@ -6,8 +6,14 @@ A new Flutter application.
 
 This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
-the source code can run with fltter sdk only
+A few resources to get you started if this is your first Flutter project.
+
+
+
+
+
+
+The source code can run with flutter sdk only
 
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
