@@ -1,12 +1,14 @@
-# covid19
-
-A new Flutter application.
+##### Covid19
 
 ## Getting Started
 
 This a Flutter application.
 
-### This is a Cvoid 19 Trcaker APP
+#### This is a Cvoid 19 Trcaker APP
+
+### Features
+
+Platform
 
 ## updates
 
