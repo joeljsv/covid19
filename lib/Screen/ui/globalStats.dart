@@ -1,15 +1,12 @@
-
-
-import 'dart:convert';
-
 import 'package:covid19/Screen/ui/colors.dart';
-import 'package:covid19/Screen/ui/sceensize.dart';
 import 'package:covid19/Screen/ui/wave_progress.dart';
+import 'package:covid19/Screen/ui/worldlist.dart';
 import 'package:covid19/service/getdata.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+import 'sceensize.dart';
+import 'dart:convert';
 
-import 'worldlist.dart';
+import 'package:http/http.dart' as http;
 
 class Overview extends StatefulWidget {
   @override
@@ -74,8 +71,6 @@ class _OverviewState extends State<Overview> {
                         ),
                         child: Column(
                           children: <Widget>[
-                            
-                          
                             Row(
                               children: <Widget>[
                                 colorCard(
@@ -108,7 +103,8 @@ class _OverviewState extends State<Overview> {
                             ),
                             SizedBox(
                               height: 20,
-                            ),  MaterialButton(
+                            ),
+                            MaterialButton(
                               shape: new RoundedRectangleBorder(
                                 borderRadius: new BorderRadius.circular(40.0),
                               ),
@@ -119,23 +115,14 @@ class _OverviewState extends State<Overview> {
                                       builder: (context) => Worldlist()),
                                 );
                               },
-                              //minWidth: double.infinity,
-                              height: 40,
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: <Widget>[
-                                  Text(
-                                    "Global list".toUpperCase(),
-                                  ),SizedBox(
-                              width: 10,
-                            ),
-                                  Icon(Icons.navigate_next)
-                                ],
+                              child: Text(
+                                'World list'.toUpperCase(),
                               ),
                               color: Fgcolor,
                               textColor: Colors.white,
-                            ),SizedBox(
-                              height: 10,
+                            ),
+                            SizedBox(
+                              height: 20,
                             ),
                             Text(
                               "Active Cases",
@@ -173,19 +160,18 @@ class _OverviewState extends State<Overview> {
                                 Colors.grey.shade100,
                                 Color(0xFF716cff)),
                             SizedBox(
-                              height: 15,
+                              height: 20,
                             ),
                             Text(
                               "CLOSED CASES",
                               style: TextStyle(
-                                fontSize: 20,
+                                fontSize: 24,
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold,
                                 inherit: true,
                                 letterSpacing: 0.4,
                               ),
                             ),
-                            
                             vaweCard(
                               context,
                               "Discharged",
@@ -244,7 +230,7 @@ class _OverviewState extends State<Overview> {
                 67,
               ),
               Text(
-                "${x.toString()}",
+                "${x.toString()} %",
                 style:
                     TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
               ),

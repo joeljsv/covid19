@@ -1,14 +1,11 @@
-
 import 'package:covid19/Screen/ui/colors.dart';
 import 'package:covid19/Screen/ui/sceensize.dart';
 import 'package:covid19/Screen/ui/wave_progress.dart';
-import 'package:covid19/service/call_service.dart';
-import 'package:covid19/service/service_locator.dart';
+
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Contact extends StatelessWidget {
-  final CallsAndMessagesService _service = locator<CallsAndMessagesService>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +13,7 @@ class Contact extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.transparent,
         title: Text(
-          " HELP LINE NUMBERS",
+          "HELP LINE NUMBERS",
           style: TextStyle(
             fontSize: 20,
             color: Colors.black,
@@ -28,21 +25,21 @@ class Contact extends StatelessWidget {
       ),
       backgroundColor: Bgcolor,
       body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
+        
         padding: EdgeInsets.only(
           left: 20,
           top: screenAwareSize(40, context),
         ),
         child: Column(
           children: <Widget>[
-            SizedBox(height: 30),
+            SizedBox(height: 10),
             InkWell(
               child: new Text(
                 "National Helpline Number",
                 style: TextStyle(
                   fontSize: 20,
                   inherit: true,
-                  color: Colors.indigo,
+                  color: Colors.black,
                   letterSpacing: 0.4,
                 ),
               ),
@@ -68,7 +65,7 @@ class Contact extends StatelessWidget {
                 "Central Helpline Number",
                 style: TextStyle(
                   fontSize: 17,
-                  color: Colors.white,
+                  color: Colors.black,
                   inherit: true,
                   letterSpacing: 0.4,
                 ),
@@ -88,7 +85,7 @@ class Contact extends StatelessWidget {
                 "State	Helpline Number",
                 style: TextStyle(
                   fontSize: 17,
-                  color: Colors.white,
+                  color: Colors.black,
                   inherit: true,
                   letterSpacing: 0.4,
                 ),
@@ -366,45 +363,49 @@ class Contact extends StatelessWidget {
         color: Bgcolor,
         borderRadius: BorderRadius.circular(6),
       ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          Stack(
-            alignment: Alignment.center,
-            children: <Widget>[
-              WaveProgress(
-                screenAwareSize(45, context),
-                fillColor,
-                bgColor,
-                95,
-              ),
-              IconButton(
-                icon: Icon(Icons.phone_in_talk),
-                color: Colors.white,
-                onPressed: () => _service.call(fields),
-              ),
-            ],
-          ),
-          SizedBox(
-            width: 20,
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(
-                name,
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold),
-              ),
-              SizedBox(
-                height: 8,
-              ),
-              InkWell(
-                child: Text(
+      child: InkWell(
+        onTap: () => launch('tel://$fields'),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Stack(
+              alignment: Alignment.center,
+              children: <Widget>[
+                WaveProgress(
+                  screenAwareSize(45, context),
+                  fillColor,
+                  bgColor,
+                  95,
+                ),
+                Icon(
+                  Icons.phone_in_talk,
+                  color: Colors.white,
+                )
+                // IconButton(
+                //   icon: Icon(Icons.phone_in_talk),
+                //   color: Colors.white,
+                // )
+              ],
+            ),
+            SizedBox(
+              width: 20,
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  name,
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  height: 8,
+                ),
+                Text(
                   "$fields",
                   style: TextStyle(
                     fontSize: 18,
@@ -412,11 +413,10 @@ class Contact extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                onTap: ()=>launch('tel://$fields'),
-              )
-            ],
-          )
-        ],
+              ],
+            )
+          ],
+        ),
       ),
     );
   }

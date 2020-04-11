@@ -1,23 +1,19 @@
 import 'dart:convert';
-
-import 'package:covid19/Screen/ui/colors.dart';
 import 'package:covid19/service/Apimode.dart';
-import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:line_icons/line_icons.dart';
 
+import 'colors.dart';
 import 'countrydetail.dart';
 import 'sceensize.dart';
 
+class Worldlist extends StatefulWidget {
+  @override
+  _WorldlistState createState() => _WorldlistState();
+}
 
-
-
- class Worldlist extends StatefulWidget {
-   @override
-   _WorldlistState createState() => _WorldlistState();
- }
- 
- class _WorldlistState extends State<Worldlist> {
+class _WorldlistState extends State<Worldlist> {
   List<Corona> test, sample, _dat1;
 
   var jsondata;
@@ -43,16 +39,19 @@ import 'sceensize.dart';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     
-     appBar: AppBar(
-       elevation: 0,
-       centerTitle: true,
-       title: Text('World',style: TextStyle(
-         color: Colors.indigo,
-         fontSize: 25
-       ),
-       ),
-     ),
+      appBar: AppBar(
+
+        backgroundColor: Colors.white,
+        elevation: 0,
+        centerTitle: true,
+        title: Text(
+          'World List',
+          style: TextStyle(color: Colors.indigo),
+        ),
+        iconTheme: IconThemeData(
+          color: Colors.indigo
+        ),
+      ),
       backgroundColor: Bgcolor,
       body: d == null
           ? Center(
@@ -65,13 +64,12 @@ import 'sceensize.dart';
               onRefresh: getData,
               child: Column(
                 children: <Widget>[
-                  SizedBox(height: 10),
                   Container(
                     width: screenAwareSize(300, context),
                     padding: EdgeInsets.symmetric(horizontal: 20),
                     height: screenAwareSize(40, context),
                     decoration: BoxDecoration(
-                      //  color: Color(0xFF262626),
+                        //  color: Color(0xFF262626),
                         borderRadius: BorderRadius.only(
                             bottomRight: Radius.circular(15.0),
                             bottomLeft: Radius.circular(15.0),
@@ -80,7 +78,7 @@ import 'sceensize.dart';
                     child: TextField(
                       style: new TextStyle(color: Colors.white),
                       decoration: InputDecoration(
-                        contentPadding: EdgeInsets.only(top: 8.0),
+                        contentPadding: EdgeInsets.only(top: 15.0),
                         border: InputBorder.none,
                         hintText: 'Search Here...',
                         hintStyle:
@@ -106,9 +104,8 @@ import 'sceensize.dart';
                           .map((pointer) => Padding(
                                 padding: const EdgeInsets.all(3),
                                 child: Container(
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle
-                                  ),
+                                  decoration:
+                                      BoxDecoration(shape: BoxShape.circle),
                                   padding: EdgeInsets.only(left: 7),
                                   child: InkWell(
                                     focusColor: Colors.white,
@@ -123,8 +120,8 @@ import 'sceensize.dart';
                                     },
                                     child: Card(
                                       elevation: 00,
-                                    //  shadowColor: Colors.indigo,
-                                     
+                                      //  shadowColor: Colors.indigo,
+
                                       margin: new EdgeInsets.symmetric(
                                           horizontal: 8.0, vertical: 8.0),
                                       child: ListTile(
@@ -134,21 +131,21 @@ import 'sceensize.dart';
                                         title: Text(
                                           pointer.country,
                                           style: TextStyle(
-                                            color: Colors.black,
+                                            color: Colors.indigo,
                                             fontWeight: FontWeight.normal,
-                                            fontSize: 20,
                                           ),
                                         ),
                                         subtitle: Text(
                                           "Total Cases : " +
                                               pointer.totalCases.toString(),
-                                          style: TextStyle( color: Colors.indigo,
-                                          fontSize: 16),
+                                          style: TextStyle(
+                                            color: Colors.indigo,
+                                          ),
                                         ),
                                         trailing: IconButton(
                                           icon: Icon(
                                             LineIcons.arrow_circle_o_right,
-                                             color: Colors.indigo,
+                                            color: Colors.indigo,
                                           ),
                                           iconSize: 31,
                                           onPressed: () {
@@ -161,9 +158,7 @@ import 'sceensize.dart';
                                                         )));
                                           },
                                         ),
-
                                       ),
-
                                     ),
                                   ),
                                 ),

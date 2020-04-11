@@ -47,8 +47,12 @@ dependencies:
   flutter_native_splash: ^0.1.9
   dash_chat: ^1.0.18
   flutter_speedometer:
+  translator: ^0.1.4
+  google_fonts:
+  firebase_messaging: ^6.0.9
+  cloud_firestore:
+  youtube_player_flutter:
   
- 
 
 dev_dependencies:
   flutter_launcher_icons: "^0.7.3"
@@ -74,6 +78,7 @@ flutter:
   assets:
     - asset/doc.png
     - asset/klgo.png
+    - asset/coronadetails.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

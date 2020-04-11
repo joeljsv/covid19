@@ -1,4 +1,3 @@
-
 import 'dart:convert';
 import 'package:covid19/Screen/ui/colors.dart';
 import 'package:covid19/service/call_service.dart';

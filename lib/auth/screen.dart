@@ -10,7 +10,8 @@ class LoginAnimatedScreen extends StatefulWidget {
   _LoginAnimatedScreenState createState() => _LoginAnimatedScreenState();
 }
 
-class _LoginAnimatedScreenState extends State<LoginAnimatedScreen> with SingleTickerProviderStateMixin {
+class _LoginAnimatedScreenState extends State<LoginAnimatedScreen>
+    with SingleTickerProviderStateMixin {
   final int delayedAmount = 500;
   double _scale;
   AnimationController _controller;
@@ -36,7 +37,7 @@ class _LoginAnimatedScreenState extends State<LoginAnimatedScreen> with SingleTi
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-          backgroundColor: Color(0xFF8185E2),
+          backgroundColor: Color(0xFF716cff),
           body: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -84,14 +85,14 @@ class _LoginAnimatedScreenState extends State<LoginAnimatedScreen> with SingleTi
                 ),
                 DelayedAnimation(
                   child: Text(
-                    "Your New Personal",
+                    "Covid 19",
                     style: TextStyle(fontSize: 20.0, color: color),
                   ),
                   delay: delayedAmount + 3000,
                 ),
                 DelayedAnimation(
                   child: Text(
-                    "Health assitant",
+                    "Tracker",
                     style: TextStyle(fontSize: 20.0, color: color),
                   ),
                   delay: delayedAmount + 3000,
@@ -100,20 +101,22 @@ class _LoginAnimatedScreenState extends State<LoginAnimatedScreen> with SingleTi
                   height: 100.0,
                 ),
                 DelayedAnimation(
-                child: GestureDetector(
-                  onTapDown: _onTapDown,
-                  onTapUp: _onTapUp,
-                  child: Transform.scale(
-                    scale: _scale,
-                    child: _animatedButtonUI,
+                  child: GestureDetector(
+                    onTapDown: _onTapDown,
+                    onTapUp: _onTapUp,
+                    child: Transform.scale(
+                      scale: _scale,
+                      child: _animatedButtonUI,
+                    ),
                   ),
+                  delay: delayedAmount + 4000,
                 ),
-                delay: delayedAmount + 4000,
-              ),
-              SizedBox(height: 50.0,),
+                SizedBox(
+                  height: 50.0,
+                ),
                 DelayedAnimation(
                   child: Text(
-                    "I Already have An Account".toUpperCase(),
+                    "Stay Home Stay Safe".toUpperCase(),
                     style: TextStyle(
                         fontSize: 20.0,
                         fontWeight: FontWeight.bold,
@@ -142,59 +145,53 @@ class _LoginAnimatedScreenState extends State<LoginAnimatedScreen> with SingleTi
   }
 
   Widget get _animatedButtonUI => InkWell(
-    onTap: () {
-        signInWithGoogle().whenComplete(() {
-          addBoolToSF();
-        
-          Navigator.of(context).pushReplacement(
-            MaterialPageRoute(
-              builder: (context) {
-                return FirstScreen();
-              },
-            ),
-          );
-        });
-      },
-      child: Container(
-          height: 60,
-          width: 270,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(100.0),
-            color: Colors.white,
-          ),
-          child: Center(
-            child: signInButton()
-          )
-        ),
-  );
- Widget signInButton() {
-    return Container(
-      
-      
-     
-     
-    
-      child:  Row(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-           Icon(FontAwesomeIcons.google,
-           color: Colors.blue,),
-            Padding(
-              padding: const EdgeInsets.only(left: 10),
-              child: Text(
-                'Hi to Dr Covid',
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.grey,
-                ),
+        onTap: () {
+          signInWithGoogle().whenComplete(() {
+            addBoolToSF();
+
+            Navigator.of(context).pushReplacement(
+              MaterialPageRoute(
+                builder: (context) {
+                  return FirstScreen();
+                },
               ),
-            )
-          ],
-        
+            );
+          });
+        },
+        child: Container(
+            height: 60,
+            width: 270,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(100.0),
+              color: Colors.white,
+            ),
+            child: Center(child: signInButton())),
+      );
+  Widget signInButton() {
+    return Container(
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Icon(
+            FontAwesomeIcons.google,
+            color: Colors.blue,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 10),
+            child: Text(
+              'Hi to Dr Covid',
+              style: TextStyle(
+                fontSize: 20,
+                color: Colors.grey,
+              ),
+            ),
+          )
+        ],
       ),
     );
   }
+
   void _onTapDown(TapDownDetails details) {
     _controller.forward();
   }

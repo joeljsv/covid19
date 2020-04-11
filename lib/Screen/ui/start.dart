@@ -1,14 +1,12 @@
-
-
-
-
+import 'package:covid19/Screen/ui/india.dart';
 import 'package:flutter/material.dart';
+
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
 
 import 'LandingScreen.dart';
+
 import 'globalStats.dart';
-import 'indiascreen.dart';
 
 class StartScreen extends StatefulWidget {
   @override
@@ -22,22 +20,19 @@ class _StartScreenState extends State<StartScreen> {
   static List<Widget> _widgetOptions = <Widget>[
     Welcome(),
     Overview(),
-   
-    IndiaScreen(),
-   
+    TestDart(),
   ];
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-      
+      backgroundColor: Colors.white,
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(color: Colors.indigo[100], boxShadow: [
-        //  BoxShadow(blurRadius: 20, color: Colors.white.withOpacity(.1))
+          //  BoxShadow(blurRadius: 20, color: Colors.white.withOpacity(.1))
         ]),
         child: SafeArea(
           child: Padding(
@@ -59,12 +54,10 @@ class _StartScreenState extends State<StartScreen> {
                     icon: LineIcons.globe,
                     text: 'Global',
                   ),
-                  
                   GButton(
                     icon: LineIcons.hourglass,
                     text: 'India',
                   ),
-                 
                 ],
                 selectedIndex: _selectedIndex,
                 onTabChange: (index) {

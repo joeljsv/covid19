@@ -10,9 +10,9 @@ class Answer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-         borderRadius: BorderRadius.all(Radius.circular(50.0)),
+        borderRadius: BorderRadius.all(Radius.circular(50.0)),
       ),
-      width:100,
+      width: 100,
       child: RaisedButton(
         color: Colors.indigo[500],
         textColor: Colors.white,

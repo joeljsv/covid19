@@ -17,23 +17,23 @@ class _FirstScreenState extends State<FirstScreen> {
   }
 
   void signOutGoogle() async {
-    await googleSignIn.signOut().whenComplete((){
-      googleSignIn.disconnect().whenComplete(() =>  Navigator.of(context).pushReplacement(
-            MaterialPageRoute(
-              builder: (context) {
-                return LoginPage();
-              },
-            ),
-          ))
-      ;});
+    await googleSignIn.signOut().whenComplete(() {
+      googleSignIn
+          .disconnect()
+          .whenComplete(() => Navigator.of(context).pushReplacement(
+                MaterialPageRoute(
+                  builder: (context) {
+                    return LoginPage();
+                  },
+                ),
+              ));
+    });
 
     print("User Sign Out");
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: StartScreen()
-    );
+    return Scaffold(body: StartScreen());
   }
 }

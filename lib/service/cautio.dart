@@ -1,9 +1,7 @@
-
 import 'package:covid19/Screen/ui/colors.dart';
+import 'package:covid19/Screen/ui/onbording/UI/video.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
-
-
 
 class Cautions extends StatefulWidget {
   @override
@@ -11,7 +9,6 @@ class Cautions extends StatefulWidget {
 }
 
 class _CautionsState extends State<Cautions> {
-
   SwiperController _swiperController;
   double prevOpacity = 1.0;
 
@@ -25,6 +22,10 @@ class _CautionsState extends State<Cautions> {
   void dispose() {
     _swiperController.dispose();
     super.dispose();
+  }
+
+  Widget imageNet() {
+    return Image.asset('asset/doc.png');
   }
 
   @override
@@ -63,16 +64,37 @@ class _CautionsState extends State<Cautions> {
     ];
     return new Scaffold(
       appBar: AppBar(
+        title: Text(
+          'Precatuions',
+          style: TextStyle(color: Colors.indigo),
+        ),
+        iconTheme: IconThemeData(color: Colors.indigo),
+        centerTitle: true,
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
       backgroundColor: Bgcolor,
       body: Container(
+        height: MediaQuery.of(context).size.height - 60,
         color: Bgcolor,
         child: Column(
           children: <Widget>[
             SizedBox(
               height: 60,
+            ),
+            FlatButton(
+              color: Colors.indigo,
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => YoutubePlayerScreen()),
+              ),
+              child: Text(
+                'Videos',
+                style: TextStyle(color: Colors.white, fontSize: 30),
+              ),
+            ),
+            SizedBox(
+              height: 10,
             ),
             Expanded(
               flex: 6,
@@ -99,6 +121,7 @@ class _CautionsState extends State<Cautions> {
                 curve: Curves.bounceOut,
               ),
             ),
+            Text('\nSwipe'),
             Expanded(
               flex: 1,
               child: Container(),
@@ -120,7 +143,7 @@ class _CautionsState extends State<Cautions> {
             blurRadius: 4,
           ),
         ],
-        color: Colors.white,
+        color: Colors.blue[100],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -147,10 +170,11 @@ class _CautionsState extends State<Cautions> {
                         )
                       ]),
                 ),
-                Image.asset(
-                  image,
-                  fit: BoxFit.contain,
-                )
+                imageNet()
+                // Image.asset(
+                //   image,
+                //   fit: BoxFit.contain,
+                // )
               ],
             ),
           ),

@@ -1,12 +1,13 @@
 import 'package:covid19/Screen/ui/colors.dart';
 import 'package:covid19/Screen/ui/helpline.dart';
+import 'package:covid19/Screen/ui/more.dart';
 import 'package:covid19/Screen/ui/sceensize.dart';
+import 'package:covid19/assment/assment.dart';
 import 'package:covid19/auth/login.dart';
 import 'package:covid19/service/cautio.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-import 'assment/aassment.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Welcome extends StatefulWidget {
   @override
@@ -47,19 +48,106 @@ class _WelcomeState extends State<Welcome> with SingleTickerProviderStateMixin {
     super.dispose();
   }
 
+  Future<void> _neverSatisfied() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Covid 19 Tracker(Dr:Covid)'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text('Developed by DEVCORP\n'),
+                Text('Developer info:\n'),
+                Center(
+                    child: Text(
+                  'Connect With us\n',
+                  style: TextStyle(color: Colors.indigo),
+                )),
+                Divider(thickness: 5, color: Colors.indigo),
+                Text('\n'),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    InkWell(
+                      child: Icon(
+                        FontAwesomeIcons.github,
+                        size: 40,
+                      ),
+                      onTap: () =>
+                          launch('https://github.com/joelSunnyVarhese'),
+                    ),
+                    Text('\t\t'),
+                    InkWell(
+                      child: Icon(
+                        FontAwesomeIcons.instagram,
+                        size: 40,
+                      ),
+                      onTap: () =>
+                          launch('https://www.instagram.com/joel.10._/'),
+                    ),
+                    Text('\t\t'),
+                    InkWell(
+                      child: Icon(
+                        FontAwesomeIcons.telegram,
+                        size: 40,
+                      ),
+                      onTap: () => launch('https://t.me/joelsunny10'),
+                    ),
+                    Text('\t\t'),
+                    InkWell(
+                      child: Icon(
+                        FontAwesomeIcons.whatsapp,
+                        size: 40,
+                      ),
+                      onTap: () => launch('https://wa.me/917034445301'),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        actions: <Widget>[
+          InkWell(
+            child: Icon(
+              Icons.info,
+              color: Colors.indigo,
+            ),
+            onTap: () => _neverSatisfied(),
+          ),
+          SizedBox(
+            width: 10,
+          ),
+        ],
+        elevation: 0,
+      ),
       backgroundColor: Bgcolor,
       body: SingleChildScrollView(
         child: Container(
-          padding: EdgeInsets.fromLTRB(25, 100, 25, 25),
+          padding: EdgeInsets.fromLTRB(25, 10, 25, 25),
           child: Center(
             child: Column(
-               
               children: <Widget>[
-                
                 Transform.translate(
                   offset: virusBounce.value,
                   child: Image(
@@ -70,11 +158,11 @@ class _WelcomeState extends State<Welcome> with SingleTickerProviderStateMixin {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 30),
+                  padding: EdgeInsets.only(top: 0),
                 ),
                 Center(
                   child: Text(
-                    'Hey $name',
+                    (name != null) ? 'Hey $name' : 'Hey',
                     style: TextStyle(
                       color: Colors.indigo,
                       fontSize: 38,
@@ -93,16 +181,14 @@ class _WelcomeState extends State<Welcome> with SingleTickerProviderStateMixin {
                   ),
                 ),
                 SizedBox(height: 20),
-                 MaterialButton(
+                MaterialButton(
                   shape: new RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(40.0),
                   ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => AssmentScreen()),
-                    );
-                  },
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => AssmentScreen()),
+                  ),
                   minWidth: double.infinity,
                   height: 40,
                   child: Text(
@@ -116,12 +202,10 @@ class _WelcomeState extends State<Welcome> with SingleTickerProviderStateMixin {
                   shape: new RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(40.0),
                   ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Cautions()),
-                    );
-                  },
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Cautions()),
+                  ),
                   minWidth: double.infinity,
                   height: 40,
                   child: Text(
@@ -149,20 +233,20 @@ class _WelcomeState extends State<Welcome> with SingleTickerProviderStateMixin {
                   color: Fgcolor,
                   textColor: Colors.white,
                 ),
-                 SizedBox(height: 5),
                 MaterialButton(
                   onPressed: () {
-                    signOutGoogle();
-                    removeValues();
-                  
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => MoreScreen()),
+                    );
                   },
                   shape: new RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(50.0),
+                    borderRadius: new BorderRadius.circular(30.0),
                   ),
-                  minWidth: 50,
+                  minWidth: double.infinity,
                   height: 40,
                   child: Text(
-                    'SignOut'.toUpperCase(),
+                    'More'.toUpperCase(),
                   ),
                   color: Fgcolor,
                   textColor: Colors.white,
@@ -173,23 +257,5 @@ class _WelcomeState extends State<Welcome> with SingleTickerProviderStateMixin {
         ),
       ),
     );
-  }
-  void signOutGoogle() async {
-    await googleSignIn.signOut().whenComplete((){
-      googleSignIn.disconnect().whenComplete(() =>  Navigator.of(context).pushReplacement(
-            MaterialPageRoute(
-              builder: (context) {
-                return LoginPage();
-              },
-            ),
-          ))
-      ;});
-
-    print("User Sign Out");
-  }
-  removeValues() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-
-    prefs.remove("log");
   }
 }
