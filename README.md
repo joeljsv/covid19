@@ -4,9 +4,23 @@ A new Flutter application.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This a Flutter application.
 
-A few resources to get you started if this is your first Flutter project.
+### This is a Cvoid 19 Trcaker APP
+
+## updates
+
+# Used APIs are
+
+For updates in India - https://api.rootnet.in/covid19-in/stats/latest
+
+For Global Stats Updates :- https://api-corona.herokuapp.com/total
+
+For Country details Updates :- https://api-corona.herokuapp.com/
+
+
+ 
+ 
 
 
 
